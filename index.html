@@ -598,70 +598,7 @@
     }
     );
   }
-
-  // 3d model
-  <p> var renderer = new THREE.WebGLRenderer();
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(75, 1, 1, 10000);
-
-  function init3D() {
-    var container = document.getElementById('3d');
-    var loader = new THREE.GLTFLoader();
-    var canvasDigits = document.getElementById('canvasDigits');
-    scene.background = new THREE.Color(0x58585A);
-    renderer.setSize(177, 177);
-
-    renderer.setPixelRatio(4);
-
-    container.insertBefore(renderer.domElement, canvasDigits);
-    renderer.domElement.style.margin = "9px";
-    loader.load('https://github.com/arduino/ArduinoAI/blob/351d4db3d308cd89a745abbd3f60e6a812dcd762/BLESense-test-dashboard/models/nano33ble.glb',
-      // called when the Arduinio model is loaded
-      function (gltf) {
-        // Model
-        <p> arduinoModel = gltf.scene;
-        scene.add(arduinoModel);<p>
-         
-
-        // LED
-        var geometry = new THREE.BoxGeometry(1, 1, 1);
-        ledMaterial = new THREE.MeshBasicMaterial({ color: 0x111111 });
-        ledObject = new THREE.Mesh(geometry, ledMaterial);
-        ledObject.position.set(9, -10, -1);
-        
-        ledLight = new THREE.PointLight(0x111111, 3, 40);
-        ledLight.color.setRGB(0,255,0);
-        ledLight.position.set(9, -10, -1.2);
-        
-        ledMaterial.color.setRGB(0,255,0);
-
-        arduinoModel.add(ledObject);
-        arduinoModel.add(ledLight);
-
-        arduinoModel.rotation.x = 90 * (Math.PI/180);  // Show the bottom side of the board by default
-        
-        var sphereSize = 1;
-
-        // Light
-        const color = 0xFFFFFF;
-        const intensity = 1;
-        const light = new THREE.DirectionalLight(color, intensity);
-        light.position.set(-20, 100, -10);
-        light.target.position.set(0, 0, 0);
-        scene.add(light);
-        scene.add(light.target);
-        var hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
-        scene.add(hemiLight);
-
-        // Camera
-        camera.position.set(0, 25, 0);
-        camera.rotation.y = Math.PI; // 180
-        camera.lookAt(new THREE.Vector3(0, 0, 0));
-        renderer.render(scene, camera);
-      }
-    );
-  }
-<p>
+ 
   function colorBars(sensor) {
     // Color + light
     const canvas = document.getElementById('colors');
