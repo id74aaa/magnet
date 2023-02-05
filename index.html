@@ -600,7 +600,7 @@
   }
 
   // 3d model
-  var renderer = new THREE.WebGLRenderer();
+  <p> var renderer = new THREE.WebGLRenderer();
   var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera(75, 1, 1, 10000);
 
@@ -619,8 +619,9 @@
       // called when the Arduinio model is loaded
       function (gltf) {
         // Model
-        arduinoModel = gltf.scene;
-        scene.add(arduinoModel);
+        <p> arduinoModel = gltf.scene;
+        scene.add(arduinoModel);<p>
+         
 
         // LED
         var geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -660,7 +661,7 @@
       }
     );
   }
-
+<p>
   function colorBars(sensor) {
     // Color + light
     const canvas = document.getElementById('colors');
