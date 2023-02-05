@@ -635,28 +635,10 @@
     if (!Number.isNaN(value)) { div.innerHTML = Math.round(value * 10) / 10; };
   }
 
-  function update3d(sensor) {
+
   
-    // Get the quaternion values
-    var x = NiclaSenseME['quaternion'].data.x.latest();
-    var y = NiclaSenseME['quaternion'].data.y.latest();
-    var z = NiclaSenseME['quaternion'].data.z.latest();
-    var w = NiclaSenseME['quaternion'].data.w.latest();
+    
 
-    // Construct the quaternion object with the values and apply that to the 3D model
-    const quaternion = new THREE.Quaternion(x, y, z, w);
-    quaternion.normalize();
-    arduinoModel.setRotationFromQuaternion(quaternion);
-
-    renderer.render(scene, camera);
-
-    // Euler conversion, show the degrees below the 3D model
-    var rotation = new THREE.Euler().setFromQuaternion(quaternion, 'XYZ');
-
-    document.getElementById('xQuaternion').innerHTML = "x: " + Math.round(rotation.x * 180 / Math.PI + 180);
-    document.getElementById('yQuaternion').innerHTML = "y: " + Math.round(rotation.y * 180 / Math.PI + 180);
-    document.getElementById('zQuaternion').innerHTML = "z: " + Math.round(rotation.z * 180 / Math.PI + 180);
-  }
 
   function bytes() {
     if (bytesReceived > bytesPrevious) {
